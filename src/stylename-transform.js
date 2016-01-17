@@ -1,3 +1,4 @@
+import transformStyleName from "./transformStyleName";
 
 
 module.exports = function (babel) {
@@ -5,6 +6,7 @@ module.exports = function (babel) {
 
   const visitor = {
     JSXElement: function (path) {
+      transformStyleName(types, path.node);
     }
   };
 
