@@ -8,4 +8,5 @@ require("babel-core/register")({
 });
 
 
-require("./test/basic");
+require("./test/simpleTest");
+require("./test/expressionTypeTest");

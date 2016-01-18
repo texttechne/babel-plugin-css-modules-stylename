@@ -8,26 +8,32 @@ function getAttributeMap(node) {
   }, {});
 }
 
-function createValueExpression(typesUtil, objectName, objectKey) {
-  const value = typesUtil.memberExpression(typesUtil.identifier(objectName), typesUtil.identifier(objectKey));
-  return typesUtil.jSXExpressionContainer(value);
+function createValueExpression(t, variableName, objectKeyValue) {
+  const isString = t.isStringLiteral(objectKeyValue);
+  const computed = !isString;
+  const objectKey = !isString ? objectKeyValue : t.identifier(objectKeyValue.value);
+
+  const value = t.memberExpression(t.identifier(variableName), objectKey, computed);
+  return t.jSXExpressionContainer(value);
 }
 
-function addClassAttribute(typesUtil, node, attributes, classValue) {
+function modifyClassAttribute(t, node, attributes, classExpression) {
   let className = attributes.className;
-  let value = createValueExpression(typesUtil, "styles", classValue);
+  let value = createValueExpression(t, "styles", classExpression);
   if (!className) {
-    className = typesUtil.jSXAttribute(typesUtil.jSXIdentifier("className"), value);
+    className = t.jSXAttribute(t.jSXIdentifier("className"), value);
     node.openingElement.attributes.push(className);
   }
 }
 
-module.exports = function(typesUtil, node) {
+module.exports = function(t, node) {
   const attributes = getAttributeMap(node);
   const styleName = attributes.styleName;
 
   if (styleName) {
-    console.log("nodeName: ", node.openingElement.name.name);
-    addClassAttribute(typesUtil, node, attributes, styleName.value.value);
+    // decompose ExpressionContainer
+    const value = t.isJSXExpressionContainer(styleName.value) ? styleName.value.expression: styleName.value;
+
+    modifyClassAttribute(t, node, attributes, value);
   }
 };
