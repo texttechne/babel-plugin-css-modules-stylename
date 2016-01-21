@@ -1,7 +1,7 @@
 import transformStyleName from "./transformStyleName";
 
 
-module.exports = function (babel) {
+export default function (babel) {
   const types = babel.types;
 
   const visitor = {
