@@ -6,7 +6,7 @@ module.exports = function (babel) {
 
   const visitor = {
     JSXElement: function (path) {
-      transformStyleName(types, path.node);
+      transformStyleName(types, path);
     }
   };
 
