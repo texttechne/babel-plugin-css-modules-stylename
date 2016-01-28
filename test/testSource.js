@@ -2,7 +2,7 @@ import babelRegister from "babel-core/register";
 import plugin from "../src/stylename-transform";
 
 babelRegister({
-  plugins: [plugin],
+  plugins: ["babel-plugin-transform-decorators-legacy", plugin],
   cache: false
 });
 

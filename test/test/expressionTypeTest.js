@@ -1,11 +1,18 @@
 import React from "react";
-import {renderToString} from "react-dom/server";
-import {expect} from "chai";
+import { renderToString } from "react-dom/server";
+import { expect } from "chai";
 
-import {String, Variable, FunctionCall, Template, Concat, Complex} from "../fixture/expression-type";
+import {
+  String,
+  Variable,
+  FunctionCall,
+  Template,
+  Concat,
+  Complex
+} from "../fixture/expression-type";
 
 
-describe("Handle different expression types", function() {
+describe("Handle different expression types for styleName property", function() {
   const result = "class=\"test-1234#\"";
 
   it("Should handle strings as styleName", function() {
@@ -37,4 +44,5 @@ describe("Handle different expression types", function() {
     const rendered = renderToString(<Complex />);
     expect(rendered).to.contain(result);
   });
+
 });

@@ -1,34 +1,35 @@
-import React, {Component} from "react";
+import React from "react";
+import CSSModules from "../../src/decorator";
 
 
 const styles = {
   test: "test-1234#"
 };
 
-exports.String = () => {
+exports.String = CSSModules(function() {
   return <div styleName={"test"} />
-};
+}, styles);
 
-exports.Variable = () => {
+exports.Variable = CSSModules(function() {
   const x = "test";
   return <div styleName={x} />;
-};
+}, styles);
 
-exports.FunctionCall = () => {
+exports.FunctionCall = CSSModules(function() {
   const x = () => ("test");
   return <div styleName={x()} />;
-};
+}, styles);
 
-exports.Concat = () => {
+exports.Concat = CSSModules(function() {
   return <div styleName={"te" + "st"} />;
-};
+}, styles);
 
-exports.Template = () => {
+exports.Template = CSSModules(function() {
   return <div styleName={`te${'st'}`} />;
-};
+}, styles);
 
-exports.Complex = () => {
+exports.Complex = CSSModules(function() {
   const e = () => "e";
   const t = "t";
   return <div styleName={"t" + e() + `s` + t } />;
-};
+}, styles);

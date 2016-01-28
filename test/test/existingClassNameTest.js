@@ -1,9 +1,14 @@
 import React from "react";
-import {renderToString} from "react-dom/server";
-import {expect} from "chai";
+import { renderToString } from "react-dom/server";
+import { expect } from "chai";
 
-
-import {StringCN, ExpressionCN, ExpressionSN, ExpressionComplex, Multiple} from "../fixture/existing-classname";
+import {
+  StringCN,
+  ExpressionCN,
+  ExpressionSN,
+  ExpressionComplex,
+  Multiple }
+from "../fixture/existing-classname";
 
 
 describe("Modify existing className", function() {
