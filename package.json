@@ -16,7 +16,8 @@
   },
   "keywords": [
     "css-modules",
-    "react-transform",
+    "stylename",
+    "classname",
     "react",
     "transform",
     "babel",
@@ -33,10 +34,11 @@
     "cover": "istanbul cover -x \"**/test/**\" node_modules/mocha/bin/_mocha test/*.js"
   },
   "dependencies": {
+    "array.prototype.findindex": "^1.0.0",
     "babel-core": "6.4.0",
     "babel-plugin-syntax-jsx": "6.3.13",
     "classnames": "^2.2.3",
-    "lodash": "4.0.0"
+    "lodash.isfunction": "^3.0.6"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",

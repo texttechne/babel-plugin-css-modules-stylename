@@ -1,4 +1,4 @@
-import _ from "lodash";
+import isFunction from "lodash.isfunction";
 import classNames from "classnames";
 
 import {
@@ -27,7 +27,7 @@ function decoratorConstructor(styles, options) {
  * to class names. This function can either be used as decorator or programmatically.
  */
 export default (...args) => {
-  if (_.isFunction(args[0])) {
+  if (isFunction(args[0])) {
     return mixinCssModulesStyles(args[0], args[1], args[2]);
   }
   else {

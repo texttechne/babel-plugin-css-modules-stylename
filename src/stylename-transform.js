@@ -1,9 +1,9 @@
-import _ from "lodash";
+import "array.prototype.findindex";
 import { DEFAULT_STYLENAME_TRANSLATE_METHOD } from "./util";
 
 
 function getAttributeMap(node) {
-  return _.reduce(node.openingElement.attributes, function (result, attr) {
+  return node.openingElement.attributes.reduce(function (result, attr) {
     result[attr.name.name] = attr;
     return result;
   }, {});
@@ -27,7 +27,6 @@ function concat(t, left, right) {
 }
 
 function modifyClassAttribute(t, node, attributes, classExpression) {
-  // todo check for style variable
   const value = createValueExpression(t, classExpression);
   let className = attributes.className;
 
@@ -42,7 +41,7 @@ function modifyClassAttribute(t, node, attributes, classExpression) {
     const newValue = concat(t, oldValue, concat(t, t.stringLiteral(" "), value));
     attributes.className = createClassNameAttribute(t, newValue);
 
-    const index = _.findIndex(node.openingElement.attributes, (attrib) => attrib.name.name == "className" );
+    const index = node.openingElement.attributes.findIndex((attrib) => attrib.name.name == "className" );
     node.openingElement.attributes[index] = attributes.className;
   }
 }
