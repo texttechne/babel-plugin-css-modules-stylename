@@ -1,8 +1,8 @@
 import _ from "lodash";
 import classNames from "classnames/bind";
-import { throwTypeError } from "./error";
+import { throwTypeError, warnClassNameNotFound } from "./error";
 
-const functionConstructor = (Component, styles, options) => {
+const mixinCssModulesStyles = (Component, styles, options) => {
   // todo use config for actual methodName
   Component.prototype.cssModulesStyles = function (styleNames) {
     let sNames;
@@ -15,30 +15,31 @@ const functionConstructor = (Component, styles, options) => {
     else if (!styleNames) {
       return null;
     }
-    else {
+    else if (Array.isArray(styleNames)) {
       sNames = styleNames;
     }
+    else {
+      throwTypeError(typeof styleNames);
+    }
 
-    const cx = classNames.bind(styles);
-    const cNames = cx(sNames);
-
-    //const cNames = classNames(sNames.map( (styleName) => styles[styleName] ));
-    return cNames ? cNames : null;
+    const cNames = classNames(sNames.map((styleName) => styles[styleName]));
+    return cNames || null;
   };
 
   return Component;
 };
 
-const decoratorConstructor = (styles, options) => {
-  return (Component) => {
-    return functionConstructor(Component, styles, options);
+function decoratorConstructor(styles, options) {
+  return function (Component) {
+    return mixinCssModulesStyles(Component, styles, options);
   };
-};
+}
 
 export default (...args) => {
   if (_.isFunction(args[0])) {
-    return functionConstructor(args[0], args[1], args[2]);
-  } else {
+    return mixinCssModulesStyles(args[0], args[1], args[2]);
+  }
+  else {
     return decoratorConstructor(args[0], args[1]);
   }
 };

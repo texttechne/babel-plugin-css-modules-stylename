@@ -2,9 +2,9 @@ import React from "react";
 import CSSModules from "../../src/decorator";
 
 const styles = {
-  test: "foo1",
-  test2: "foo2",
-  test3: "foo3"
+  "ci-test": "foo1",
+  "ci-test2": "foo2",
+  "ci-test3": "foo3"
 };
 
 
@@ -33,13 +33,13 @@ exports.NumberValue = CSSModules(function() {
 }, styles);
 
 exports.MultipleStrings = CSSModules(function() {
-  return <div styleName="test test2 test3" />
+  return <div styleName="ci-test ci-test2 ci-test3" />
 }, styles);
 
 exports.ArrayOfStrings = CSSModules(function() {
-  return <div styleName={["test", "test2", "test3"]} />
+  return <div styleName={ ["ci-test", "ci-test2", "ci-test3"] } />
 }, styles);
 
 exports.ObjectWithTruth = CSSModules(function() {
-  return <div styleName={ { test: true, test2: false, test3: true } } />
+  return <div styleName={ { "ci-test": true, "ci-test2": false, "ci-test3": true } } />
 }, styles);

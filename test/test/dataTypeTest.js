@@ -57,10 +57,10 @@ describe("Handle different data types for styleName property", function() {
     expect(rendered).to.contain(result);
   });
 
-  it("Should handle objects with truth values", function() {
-    const result = `class="foo1 foo3"`;
-    const rendered = renderToString(<ObjectWithTruth />);
-    expect(rendered).to.contain(result);
+  it("Should throw error for objects", function() {
+    expect( () => {
+      renderToString(<ObjectWithTruth />)
+    }).to.throw(TypeError, /object/);
   });
 
 });
