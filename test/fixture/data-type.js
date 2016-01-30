@@ -36,7 +36,7 @@ exports.MultipleStrings = CSSModules(function() {
   return <div styleName="ci-test ci-test2 ci-test3" />
 }, styles);
 
-exports.ArrayOfStrings = CSSModules(function() {
+exports.ArrayOfString = CSSModules(function() {
   return <div styleName={ ["ci-test", "ci-test2", "ci-test3"] } />
 }, styles);
 

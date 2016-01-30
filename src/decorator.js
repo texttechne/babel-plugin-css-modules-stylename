@@ -4,36 +4,8 @@ import { throwTypeError, warnClassNameNotFound } from "./error";
 
 const mixinCssModulesStyles = (Component, styles, options) => {
   // todo use config for actual methodName
-  Component.prototype.cssModulesStyles = function (styleNames) {
-    let sNames;
-    if (typeof styleNames === "string") {
-      sNames = styleNames.trim();
-      if (!sNames) {
-        return null;
-      }
-      sNames = sNames.split(" ");
-    }
-    else if (typeof styleNames === "boolean") {
-      throwTypeError("boolean");
-    }
-    else if (!styleNames) {
-      return null;
-    }
-    else if (Array.isArray(styleNames)) {
-      sNames = styleNames;
-    }
-    else {
-      throwTypeError(typeof styleNames);
-    }
-
-    const cNames = classNames(sNames.map((styleName) => {
-      const className = styles[styleName];
-      if (!className) {
-        warnClassNameNotFound(styleName);
-      }
-      return className;
-    }));
-    return cNames || null;
+  Component.prototype.cssModulesStyles = function(styleNames) {
+    return exports.toClassName(styles, styleNames);
   };
 
   return Component;
@@ -52,4 +24,31 @@ export default (...args) => {
   else {
     return decoratorConstructor(args[0], args[1]);
   }
+};
+
+exports.toClassName = function (styles, styleNames) {
+  let sNames;
+  if (typeof styleNames === "string") {
+    sNames = styleNames.trim();
+    if (!sNames) {
+      return null;
+    }
+    sNames = sNames.split(" ");
+  }
+  else if (!styleNames) {
+    return null;
+  }
+  else {
+    throwTypeError(typeof styleNames);
+  }
+
+  const cNames = classNames(sNames.map((styleName) => {
+    const className = styles[styleName];
+    if (!className) {
+      warnClassNameNotFound(styleName);
+    }
+    return className;
+  }));
+
+  return cNames || null;
 };

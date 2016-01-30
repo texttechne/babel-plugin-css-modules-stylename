@@ -13,7 +13,7 @@ import {
   TruthyValue,
   NumberValue,
   MultipleStrings,
-  ArrayOfStrings,
+  ArrayOfString,
   ObjectWithTruth
 } from "../fixture/data-type";
 
@@ -48,26 +48,22 @@ describe("Handle different data types for styleName property", function() {
     expect(console.error.called).to.be.false;
   });
 
+  it("Should not add className attribute when styleName is false", function() {
+    const rendered = renderToString(<FalsyValue />);
+    expect(rendered).not.to.contain(resultClassName);
+    expect(console.error.called).to.be.false;
+  });
+
   it("Should throw error when styleName is true", function() {
     expect(() => {
       renderToString(<TruthyValue />);
     }).to.throw(TypeError, /boolean/);
   });
 
-  it("Should throw error when styleName is false", function() {
-    expect(() => {
-      renderToString(<FalsyValue />);
-    }).to.throw(TypeError, /boolean/);
-  });
-
-  it("Should handle multiple string values", function() {
-    const rendered = renderToString(<MultipleStrings />);
-    expect(rendered).to.contain(result);
-  });
-
-  it("Should handle array of strings", function() {
-    const rendered = renderToString(<ArrayOfStrings />);
-    expect(rendered).to.contain(result);
+  it("Should throw error for arrays", function() {
+    expect( () => {
+      renderToString(<ArrayOfString />)
+    }).to.throw(TypeError, /object/);
   });
 
   it("Should throw error for objects", function() {

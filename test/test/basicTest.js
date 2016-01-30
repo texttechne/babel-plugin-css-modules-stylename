@@ -48,7 +48,7 @@ describe("Map styleNames which are given to function wrapper", function() {
 
 });
 
-describe("Unknown styleNames", function() {
+describe("Handle unknown styleNames", function() {
   beforeEach(function() {
     // use a stub instead of a spy, so that console errors won't ge printed
     sinon.stub(console, "error");
