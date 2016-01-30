@@ -27,9 +27,3 @@ exports.ExpressionComplex = CSSModules(function() {
   const y2 = () => "ing";
   return <div styleName={x} className={y + y2()} />;
 }, styles);
-
-exports.Multiple = CSSModules(function() {
-  const x = "test test2 test3";
-  const y = "exists exists2 exists3";
-  return <div styleName={x} className={y} />;
-}, styles);

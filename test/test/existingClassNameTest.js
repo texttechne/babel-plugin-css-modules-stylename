@@ -6,9 +6,8 @@ import {
   StringCN,
   ExpressionCN,
   ExpressionSN,
-  ExpressionComplex,
-  Multiple }
-from "../fixture/existing-classname";
+  ExpressionComplex
+} from "../fixture/existing-classname";
 
 
 describe("Modify existing className", function() {
@@ -33,10 +32,5 @@ describe("Modify existing className", function() {
     const rendered = renderToString(<ExpressionComplex />);
     expect(rendered).to.contain(result);
   });
-
-  //it("Should modify multiple existing classNames with multiple styleNames", function() {
-  //  const rendered = renderToString(<Multiple />);
-  //  expect(rendered).to.contain("class=\"exists exists2 exists3 added added2 added3\"");
-  //});
 
 });

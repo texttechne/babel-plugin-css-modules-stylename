@@ -1,5 +1,5 @@
 import _ from "lodash";
-import classNames from "classnames/bind";
+import classNames from "classnames";
 import { throwTypeError, warnClassNameNotFound } from "./error";
 
 const mixinCssModulesStyles = (Component, styles, options) => {
