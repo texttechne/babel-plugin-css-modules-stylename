@@ -1,6 +1,5 @@
 import React from "react";
-import CSSModules from "../../src/decorator";
-import classNamesLib from "classnames";
+import CSSModules, {joinNames} from "../../src/decorator";
 
 const styles = {
   "ci-test1": "added-1",
@@ -32,7 +31,7 @@ exports.MultipleWithMultipleUnknownStyleNames = CSSModules(function() {
 }, styles);
 
 exports.WithClassNamesLibrary = CSSModules(function() {
-  const styleNames = classNamesLib(
+  const styleNames = joinNames(
     "ci-test1",
     ["ci-test2", "ci-test3"],
     {"from-object": true, "nope": false},

@@ -2,6 +2,7 @@ import _ from "lodash";
 import classNames from "classnames";
 import { throwTypeError, warnClassNameNotFound } from "./error";
 
+
 const mixinCssModulesStyles = (Component, styles, options) => {
   // todo use config for actual methodName
   Component.prototype.cssModulesStyles = function(styleNames) {
@@ -17,6 +18,10 @@ function decoratorConstructor(styles, options) {
   };
 }
 
+/**
+ * Add method to given component (function or ES6 class), which translates style names
+ * to class names. This function can either be used as decorator or programmatically.
+ */
 export default (...args) => {
   if (_.isFunction(args[0])) {
     return mixinCssModulesStyles(args[0], args[1], args[2]);
@@ -26,6 +31,24 @@ export default (...args) => {
   }
 };
 
+
+/**
+ * Expose classnames library for two reasons:
+ * 1) convenience: no need to import classnames lib explicitly and additionally
+ * 2) semantic: classnames is used to join & concatenate style names instead of class names
+ *
+ * @see https://github.com/JedWatson/classnames
+ */
+exports.joinNames = classNames;
+
+/**
+ * Translates an input string of space separated style names into a space separated string
+ * of class names. Drops and warns about style names which are not mapped.
+ *
+ * @param {object} styles - styles object from CSSModules
+ * @param {string} styleNames - space separated string of style names
+ * @returns {string} translated classNames
+ */
 exports.toClassName = function (styles, styleNames) {
   let sNames;
   if (typeof styleNames === "string") {
