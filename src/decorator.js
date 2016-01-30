@@ -7,7 +7,11 @@ const mixinCssModulesStyles = (Component, styles, options) => {
   Component.prototype.cssModulesStyles = function (styleNames) {
     let sNames;
     if (typeof styleNames === "string") {
-      sNames = styleNames.split(" ");
+      sNames = styleNames.trim();
+      if (!sNames) {
+        return null;
+      }
+      sNames = sNames.split(" ");
     }
     else if (typeof styleNames === "boolean") {
       throwTypeError("boolean");
@@ -22,7 +26,13 @@ const mixinCssModulesStyles = (Component, styles, options) => {
       throwTypeError(typeof styleNames);
     }
 
-    const cNames = classNames(sNames.map((styleName) => styles[styleName]));
+    const cNames = classNames(sNames.map((styleName) => {
+      const className = styles[styleName];
+      if (!className) {
+        warnClassNameNotFound(styleName);
+      }
+      return className;
+    }));
     return cNames || null;
   };
 
