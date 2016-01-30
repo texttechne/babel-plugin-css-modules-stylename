@@ -25,13 +25,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf lib && rimraf .tmp",
+    "clean": "rimraf lib && rimraf .tmp && rimraf coverage",
     "compile": "babel -d lib/ src/",
     "compileFixtures": "babel --plugins ./lib/stylename-transform.js -d .tmp/ test/fixture",
     "prepublish": "npm run clean && npm run compile",
     "test": "npm run compile && mocha test/test.js",
     "testSource": "mocha --compilers js:babel-register test/testSource.js",
-    "cover": "istanbul cover -x \"**/test/**\" node_modules/mocha/bin/_mocha test/*.js"
+    "cover": "npm run clean && npm run compile && istanbul cover -x \"**/test/**\" node_modules/mocha/bin/_mocha test/*.js"
   },
   "dependencies": {
     "array.prototype.findindex": "^1.0.0",

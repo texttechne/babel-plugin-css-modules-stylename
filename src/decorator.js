@@ -2,8 +2,6 @@ import isFunction from "lodash.isfunction";
 import classNames from "classnames";
 
 import {
-  throwTypeError,
-  warnClassNameNotFound,
   DEFAULT_STYLENAME_TRANSLATE_METHOD
 } from "./util";
 
@@ -66,13 +64,13 @@ exports.toClassName = function (styles, styleNames) {
     return null;
   }
   else {
-    throwTypeError(typeof styleNames);
+    throw new TypeError(`Attribute styleName cannot be of type [${typeof styleNames}]`);
   }
 
   const cNames = classNames(sNames.map((styleName) => {
     const className = styles[styleName];
     if (!className) {
-      warnClassNameNotFound(styleName);
+      console.error(`The provided style name [${styleName}] does not occur as class name in your css file!`);
     }
     return className;
   }));
