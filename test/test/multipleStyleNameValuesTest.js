@@ -3,7 +3,6 @@ import { renderToString } from "react-dom/server";
 import { expect } from "chai";
 import sinon from "sinon";
 
-import { getTypeErrorMessage } from "../../src/error";
 import {
   Multiple,
   MultipleWithExistingClassName,

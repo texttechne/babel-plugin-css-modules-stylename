@@ -1,11 +1,15 @@
 import _ from "lodash";
 import classNames from "classnames";
-import { throwTypeError, warnClassNameNotFound } from "./error";
+
+import {
+  throwTypeError,
+  warnClassNameNotFound,
+  DEFAULT_STYLENAME_TRANSLATE_METHOD
+} from "./util";
 
 
 const mixinCssModulesStyles = (Component, styles, options) => {
-  // todo use config for actual methodName
-  Component.prototype.cssModulesStyles = function(styleNames) {
+  Component.prototype[DEFAULT_STYLENAME_TRANSLATE_METHOD] = function(styleNames) {
     return exports.toClassName(styles, styleNames);
   };
 
