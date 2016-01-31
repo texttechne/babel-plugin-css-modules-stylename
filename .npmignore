@@ -1,0 +1,12 @@
+coverage
+.tmp
+*.log
+*.yml
+
+*.iml
+.idea
+.editorconfig
+.babelrc
+
+src
+test
