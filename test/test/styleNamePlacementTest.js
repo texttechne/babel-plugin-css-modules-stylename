@@ -1,6 +1,6 @@
 import React from "react";
-import {renderToString} from "react-dom/server";
-import {expect} from "chai";
+import { renderToString } from "react-dom/server";
+import { expect } from "chai";
 
 import {
   WithinFunctionES5,

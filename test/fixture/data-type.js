@@ -1,5 +1,5 @@
 import React from "react";
-import CSSModules from "../../src/decorator";
+import CSSModules from "../../src";
 
 const styles = {
   "ci-test": "foo1",

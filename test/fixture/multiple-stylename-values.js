@@ -1,5 +1,5 @@
 import React from "react";
-import CSSModules, {joinNames} from "../../src/decorator";
+import CSSModules, {joinNames} from "../../src";
 
 const styles = {
   "ci-test1": "added-1",

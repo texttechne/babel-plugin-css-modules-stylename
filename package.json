@@ -6,7 +6,7 @@
     "name": "texttechne",
     "email": "gedankengut@gmx.de"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/texttechne/react-stylename-transform"
@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "rimraf lib && rimraf .tmp && rimraf coverage",
     "compile": "babel -d lib/ src/",
-    "compileFixtures": "babel --plugins ./lib/stylename-transform.js -d .tmp/ test/fixture",
+    "compileFixtures": "babel --plugins ./lib/transform.js -d .tmp/ test/fixture",
     "prepublish": "npm run clean && npm run compile",
     "test": "npm run compile && mocha test/test.js",
     "testSource": "mocha --compilers js:babel-register test/testSource.js",

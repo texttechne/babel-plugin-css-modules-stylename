@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import CSSModules from "../../src/decorator";
+import CSSModules from "../../src";
 
 
 const styles = {

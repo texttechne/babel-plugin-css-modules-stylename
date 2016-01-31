@@ -1,5 +1,5 @@
 import babelRegister from "babel-core/register";
-import plugin from "../src/stylename-transform";
+import plugin from "../src/transform";
 
 babelRegister({
   plugins: ["babel-plugin-transform-decorators-legacy", plugin],

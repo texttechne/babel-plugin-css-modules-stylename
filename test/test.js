@@ -1,5 +1,5 @@
 require("babel-polyfill");
-var plugin = require("../lib/stylename-transform");
+var plugin = require("../lib/transform");
 
 require("babel-core/register")({
   plugins: ["babel-plugin-transform-decorators-legacy", plugin],
