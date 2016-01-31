@@ -1,6 +1,6 @@
 {
-  "name": "react-stylename-transform",
-  "version": "0.1.0",
+  "name": "react-stylename",
+  "version": "0.2.0",
   "description": "Seamless integration of CSS modules with React components",
   "author": {
     "name": "texttechne",
