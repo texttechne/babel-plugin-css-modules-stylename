@@ -73,6 +73,4 @@ describe("Handle unknown styleNames", function() {
     expect(console.error.calledOnce).to.be.true;
     expect(console.error.getCall(0).args[0]).to.equal("The provided style name [test] does not occur as class name in your css file!")
   });
-
-
 });

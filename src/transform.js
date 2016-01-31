@@ -2,9 +2,11 @@ import "array.prototype.findindex";
 import { DEFAULT_STYLENAME_TRANSLATE_METHOD } from "./util";
 
 
-function getAttributeMap(node) {
+function getAttributeMap(t, node) {
   return node.openingElement.attributes.reduce(function (result, attr) {
-    result[attr.name.name] = attr;
+    if (t.isJSXAttribute(attr)) {
+      result[attr.name.name] = attr;
+    }
     return result;
   }, {});
 }
@@ -41,14 +43,14 @@ function modifyClassAttribute(t, node, attributes, classExpression) {
     const newValue = concat(t, oldValue, concat(t, t.stringLiteral(" "), value));
     attributes.className = createClassNameAttribute(t, newValue);
 
-    const index = node.openingElement.attributes.findIndex((attrib) => attrib.name.name == "className" );
+    const index = node.openingElement.attributes.findIndex((attrib) => t.isJSXAttribute(attrib) && attrib.name.name == "className" );
     node.openingElement.attributes[index] = attributes.className;
   }
 }
 
 function transformStyleName(t, path) {
   const node = path.node;
-  const attributes = getAttributeMap(node);
+  const attributes = getAttributeMap(t, node);
   const styleName = attributes.styleName;
 
   if (styleName) {

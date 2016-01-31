@@ -42,4 +42,3 @@ const StyleNameBasicSFArrow = ({passedStyleName}) => {
   return <div styleName={passedStyleName} />
 };
 exports.StyleNameBasicSFArrow = CSSModules(StyleNameBasicSFArrow, styleNames);
-
