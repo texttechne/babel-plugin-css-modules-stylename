@@ -1,7 +1,7 @@
 # React StyleName
 [![Build Status](https://travis-ci.org/texttechne/react-stylename.svg?branch=master)](https://travis-ci.org/texttechne/react-stylename) [![Coverage Status](https://coveralls.io/repos/github/texttechne/react-stylename/badge.svg?branch=master)](https://coveralls.io/github/texttechne/react-stylename?branch=master)
 
-__BETA VERSION: Not released yet! See [issue #1](#1)__
+__BETA VERSION: Not released yet! See [issue #1](https://github.com/texttechne/react-stylename/issues/1)__
 
 This module allows for a seamless integration of [CSS-Modules](https://github.com/css-modules/css-modules)
 (also known as local CSS) with React components. It provides a `styleName` attribute for any JSX element,
