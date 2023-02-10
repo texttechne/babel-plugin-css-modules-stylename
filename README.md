@@ -1,5 +1,10 @@
-# React StyleName
+# React StyleName - ARCHIVED
 [![Build Status](https://travis-ci.org/texttechne/react-stylename.svg?branch=master)](https://travis-ci.org/texttechne/react-stylename) [![Coverage Status](https://coveralls.io/repos/github/texttechne/react-stylename/badge.svg?branch=master)](https://coveralls.io/github/texttechne/react-stylename?branch=master)
+
+## Final Project Status
+The approach never fully solved the problem => Project archived!
+
+## Orignial Description
 
 __BETA VERSION: Not released yet! See [issue #1](https://github.com/texttechne/react-stylename/issues/1)__
 
